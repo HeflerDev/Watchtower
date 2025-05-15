@@ -1,0 +1,35 @@
+{
+  "name": "watchtower",
+  "version": "1.0.0",
+  "description": "An API designed to orchestrate and manage DevOps operations — including deployment cycles, monitoring, and automation — through a unified, programmable interface.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "tsc",
+    "dev": "nodemon --exec ts-node src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeflerDev/Watchtower.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeflerDev/Watchtower/issues"
+  },
+  "homepage": "https://github.com/HeflerDev/Watchtower#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.3"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.18",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
