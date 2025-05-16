@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { apiKeys, generateApiKey } from "@/helper/apiKey";
+import { generateApiKey } from "@/helper/apiKey";
 import * as apiKeyConnection from "@/model/ApiKeyConnection";
 
 export const post = async (req: Request, res: Response) => {
