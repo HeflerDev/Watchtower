@@ -52,3 +52,11 @@ export const create = async (data: IApiKeyConnection) => {
   });
   return await document.save();
 };
+
+export const get = async (apiKey: string) => {
+  const key = await ApiKeyConnection.findOne({ apiKey }).lean();
+
+  if (!key) throw new Error("Unauthorized");
+
+  return key;
+};
