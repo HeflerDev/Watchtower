@@ -1,11 +1,14 @@
 import { Request, Response } from "express";
 import { apiKeys, generateApiKey } from "@/helper/apiKey";
+import { create } from "@/model/ApiKeyConnection";
 
-export const post = (req: Request, res: Response) => {
+export const post = async (req: Request, res: Response) => {
+  const { host, username, privateKey } = req.body;
   const apiKey = generateApiKey();
-  apiKeys.add(apiKey);
 
-  return res.status(201).json({ apiKey });
+  const data = await create({ host, username, privateKey, apiKey });
+
+  return res.status(200).send({ data });
 };
 
 export const get = (_req: Request, res: Response) => {

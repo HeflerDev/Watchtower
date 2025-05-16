@@ -20,12 +20,15 @@
   },
   "homepage": "https://github.com/HeflerDev/Watchtower#readme",
   "dependencies": {
-    "@aws-sdk/client-ec2": "^3.810.0",
+    "@types/cryptr": "^4.0.3",
     "@types/module-alias": "^2.0.4",
+    "@types/ssh2": "^1.15.5",
+    "cryptr": "^6.3.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "module-alias": "^2.2.3",
-    "mongoose": "^8.14.3"
+    "mongoose": "^8.14.3",
+    "ssh2": "^1.16.0"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
