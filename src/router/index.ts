@@ -1,5 +1,4 @@
-import express, { IRouter, NextFunction, Request, Response } from "express";
+import auth from "./auth";
+import ssh from "./ssh";
 
-const router: IRouter = express.Router();
-
-export default router;
+export default [auth, ssh];
