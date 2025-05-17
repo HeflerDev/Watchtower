@@ -11,7 +11,7 @@ const router: IRouter = express.Router();
 
 const basePath = "/auth";
 
-router.post(basePath, verify, upload.single("key"), wrap(post));
+router.post(basePath, verify, upload.single("privateKey"), wrap(post));
 router.get(basePath, verify, wrap(get));
 
 export default router;
