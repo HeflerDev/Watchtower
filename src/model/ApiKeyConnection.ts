@@ -60,3 +60,14 @@ export const get = async (apiKey: string) => {
 
   return key;
 };
+
+export const getPrivateKey = async (apiKey: string): Promise<string> => {
+  const key = await ApiKeyConnection.findOne(
+    { apiKey },
+    { privateKey: 1 },
+  ).lean();
+
+  const decription = cryptr.decrypt(key.privateKey);
+
+  return decription;
+};
