@@ -1,13 +1,12 @@
 import { wrap } from "@/helper";
 import express, { IRouter, NextFunction, Request, Response } from "express";
 import { verify } from "@/middlewares/auth";
-import { get, post } from "@/controller/auth";
+import { execCommand } from "@/controller/ssh";
 
 const router: IRouter = express.Router();
 
-const basePath = "/auth";
+const basePath = "/ssh";
 
-router.post(basePath, verify, wrap(post));
-router.get(basePath, verify, wrap(get));
+router.post(basePath, verify, wrap(execCommand));
 
 export default router;
