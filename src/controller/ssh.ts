@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { SSHClientHelper } from "@/helper/ssh";
+import { get } from "@/model/ApiKeyConnection";
 
 interface ExecRequestBody {
   host: string;
@@ -9,13 +10,16 @@ interface ExecRequestBody {
 }
 
 export const execCommand = async (req: Request, res: Response) => {
-  const { host, username, privateKey, command } = req.body as ExecRequestBody;
+  const { command } = req.body as ExecRequestBody;
+  const apiKey = req.headers["x-api-key"];
 
-  if (!host || !username || !privateKey || !command) {
-    return res.status(400).json({ error: "Faltando dados obrigatórios" });
-  }
+  const { host, username, privateKey } = await get(apiKey as string);
 
-  const ssh = new SSHClientHelper({ host, username, privateKey });
+  const ssh = new SSHClientHelper({
+    host,
+    username,
+    privateKey,
+  });
 
   try {
     await ssh.connect();
