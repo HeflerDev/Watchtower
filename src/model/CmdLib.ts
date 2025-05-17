@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
 
 export interface ICmdLib {
-  apiKeyId: Types.ObjectId | string;
+  apiKeyId?: Types.ObjectId | string;
   command: string;
   label: string;
 }
