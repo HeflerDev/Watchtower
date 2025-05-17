@@ -3,9 +3,6 @@ import { SSHClientHelper } from "@/helper/ssh";
 import { get } from "@/model/ApiKeyConnection";
 
 interface ExecRequestBody {
-  host: string;
-  username: string;
-  privateKey: string;
   command: string;
 }
 

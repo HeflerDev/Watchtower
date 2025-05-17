@@ -9,8 +9,8 @@ import { connectToMongoose } from "./helper/mongoose";
 
 const app: Express = express();
 
-app.use("/api", router);
 app.use(express.json());
+app.use("/api", router);
 
 const PORT = process.env.PORT || 3000;
 

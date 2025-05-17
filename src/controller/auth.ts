@@ -18,18 +18,35 @@ export const post = async (req: Request, res: Response) => {
   return res.status(200).send({ data });
 };
 
-export const get = async (req: Request, res: Response) => {
-  try {
-    const apiKey = req.headers["x-api-key"];
+export const get = {
+  one: async (req: Request, res: Response) => {
+    try {
+      const apiKey = req.headers["x-api-key"];
 
-    if (!apiKey || typeof apiKey !== "string") {
-      return res.status(401).json({ error: "API key is missing or invalid" });
+      if (!apiKey || typeof apiKey !== "string") {
+        return res.status(401).json({ error: "API key is missing or invalid" });
+      }
+
+      const data = await apiKeyConnection.get(apiKey);
+
+      return res.status(200).send({ data });
+    } catch (error) {
+      return res.status(401).send({ error });
     }
+  },
+  privateKey: async (req: Request, res: Response) => {
+    try {
+      const apiKey = req.headers["x-api-key"];
 
-    const data = await apiKeyConnection.get(apiKey);
+      if (!apiKey || typeof apiKey !== "string") {
+        return res.status(401).json({ error: "API key is missing or invalid" });
+      }
 
-    return res.status(200).send({ data });
-  } catch (error) {
-    return res.status(401).send({ error });
-  }
+      const data = await apiKeyConnection.getPrivateKey(apiKey);
+
+      return res.status(200).send({ data });
+    } catch (e: any) {
+      return res.status(400).send({ message: e.message });
+    }
+  },
 };

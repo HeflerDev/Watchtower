@@ -56,6 +56,10 @@ export const create = async (data: IApiKeyConnection) => {
 export const get = async (apiKey: string) => {
   const key = await ApiKeyConnection.findOne({ apiKey }).lean();
 
+  const decryptedKey: string = cryptr.decrypt(key.privateKey);
+
+  key.privateKey = decryptedKey;
+
   if (!key) throw new Error("Unauthorized");
 
   return key;
