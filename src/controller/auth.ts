@@ -6,14 +6,16 @@ export const post = async (req: Request, res: Response) => {
   const { host, username, privateKey } = req.body;
   const apiKey = generateApiKey();
 
-  const data = await apiKeyConnection.create({
-    host,
-    username,
-    privateKey,
-    apiKey,
-  });
+  console.log(req.file);
 
-  return res.status(200).send({ data });
+  // const data = await apiKeyConnection.create({
+  //   host,
+  //   username,
+  //   privateKey,
+  //   apiKey,
+  // });
+
+  return res.status(200).send({});
 };
 
 export const get = async (req: Request, res: Response) => {
