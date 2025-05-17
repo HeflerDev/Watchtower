@@ -1,24 +1,26 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "ESNext",
-    "jsx": "react-jsx",
-    "strict": false, // Disable all strict type-checking
-    "noEmitOnError": false, // Allow output even if errors are present
-    "skipLibCheck": true, // Skip type-checking declaration files
-    // "suppressImplicitAnyIndexErrors": true, // Suppress warnings for implicit `any` in index types
-    "moduleResolution": "node",
+    "target": "ES2022",
+    "lib": ["dom", "es2015"],
+    "module": "CommonJS",
+    "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "outDir": "./build",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": false,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "rootDir": "./src",
+    "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "build"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "exclude": ["**/node_modules", "client", "**/__tests__"]
 }
