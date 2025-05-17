@@ -3,19 +3,19 @@ import { generateApiKey } from "@/helper/apiKey";
 import * as apiKeyConnection from "@/model/ApiKeyConnection";
 
 export const post = async (req: Request, res: Response) => {
-  const { host, username, privateKey } = req.body;
+  const { host, username } = req.body;
   const apiKey = generateApiKey();
 
-  console.log(req.file);
+  const privateKey = req.file.buffer.toString("utf-8");
 
-  // const data = await apiKeyConnection.create({
-  //   host,
-  //   username,
-  //   privateKey,
-  //   apiKey,
-  // });
+  const data = await apiKeyConnection.create({
+    host,
+    username,
+    apiKey,
+    privateKey,
+  });
 
-  return res.status(200).send({});
+  return res.status(200).send({ data });
 };
 
 export const get = async (req: Request, res: Response) => {
