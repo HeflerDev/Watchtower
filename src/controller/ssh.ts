@@ -26,11 +26,11 @@ export const execCommand = async (req: Request, res: Response) => {
     const output = await ssh.execCommand(command);
     ssh.disconnect();
 
-    res.status(200).json({ output });
+    return res.status(200).json({ output });
   } catch (err: any) {
     ssh.disconnect();
-    res
+    return res
       .status(500)
-      .json({ error: "Erro ao executar comando", details: err.message });
+      .json({ error: "Error with cmd execution", details: err.message });
   }
 };
