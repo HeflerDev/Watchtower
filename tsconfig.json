@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/model/CmdLib"],
   "exclude": ["**/node_modules", "client", "**/__tests__"]
 }
