@@ -1,27 +1,43 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document, Types } from "mongoose";
 
-export interface IApiKeyConnection {
-  apiKey: string;
-  host: string;
-  username: string;
-  privateKey: string;
+export interface ICmdLib {
+  apiKeyId: Types.ObjectId | string;
+  command: string;
+  label: string;
 }
 
-export interface ApiKeyConnectionDocument extends Document {
-  apiKey: string;
-  host: string;
-  username: string;
-  privateKey: string;
+export interface CmdLibDocument extends Document {
+  apiKeyId: Types.ObjectId | string;
+  command: string;
+  label: string;
 }
 
-const Schema = new Schema<ApiKeyConnectionDocument>(
+const CmdLibSchema = new Schema<CmdLibDocument>(
   {
-    { apiKeyId: }
+    apiKeyId: { type: Schema.Types.ObjectId, required: true },
+    command: { type: String, required: true },
+    label: { type: String, required: true },
   },
   { timestamps: true },
 );
 
-const ApiKeyConnection = mongoose.model<ApiKeyConnectionDocument>(
-  "ApiKeyConnection",
-  ApiKeyConnectionSchema,
-);
+const CmdLib = mongoose.model<CmdLibDocument>("CmdLib", CmdLibSchema);
+
+export const get = async (id: string, label?: string) => {
+  const documents = await CmdLib.find({
+    apiKeyId: id,
+    ...(label ? { label } : {}),
+  });
+
+  return documents;
+};
+
+export const create = async (id: string, data: ICmdLib) => {
+  const document = new CmdLib({
+    apiKeyId: id,
+    command: data.command,
+    label: data.label,
+  });
+
+  return await document.save();
+};

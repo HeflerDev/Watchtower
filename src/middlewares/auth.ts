@@ -22,5 +22,6 @@ export const verify: RequestHandler = async (
 
   req.key = keyDoc.apiKey;
   req.id = keyDoc._id.toString();
+
   next();
 };
