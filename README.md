@@ -1,3 +1,6 @@
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/2c638a5b-8087-4294-90db-5c0627ed7bb6" />
+
+
 # DevOps Cycle API
 
 An API designed to orchestrate and manage DevOps operations — including deployment cycles, monitoring, and automation — through a unified, programmable interface.
